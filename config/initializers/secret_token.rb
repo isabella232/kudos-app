@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Kudos::Application.config.secret_key_base = '8d25bb5e22f7dc9ce433522f0c452fb7db58f5aaa0efe076edefc2e188c63e9969dd4934d9fbb98f8f6ff86ac03a07e870b6610f97e10770de3239d0c31d4b09'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Kudos::Application.config.secret_key_base = secure_token
