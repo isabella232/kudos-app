@@ -1,0 +1,12 @@
+<% if @kudoer.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-error">
+        The form contains <%= pluralize(@kudoer.errors.count, "error") %>.
+      </div>
+      <ul>
+        <% @kudoer.errors.full_messages.each do |msg| %>
+            <li>* <%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>

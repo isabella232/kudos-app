@@ -20,4 +20,31 @@ describe "Kudoer pages" do
     it { should have_title(kudoer.first_name + ' ' + kudoer.last_name) }
   end
 
+  describe "signup" do
+
+    before { visit signup_path }
+
+    let(:submit) { "Create my account" }
+
+    describe "with invalid information" do
+      it "should not create a kudoer" do
+        expect { click_button submit }.not_to change(Kudoer, :count)
+      end
+    end
+
+    describe "with valid information" do
+      before do
+        fill_in "First name",   with: "Example"
+        fill_in "Last name",    with: "User"
+        fill_in "Email",        with: "user@example.com"
+        fill_in "Password",     with: "foobar"
+        fill_in "Confirmation", with: "foobar"
+      end
+
+      it "should create a kudoer" do
+        expect { click_button submit }.to change(Kudoer, :count).by(1)
+      end
+    end
+  end
+
 end

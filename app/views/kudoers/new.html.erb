@@ -1,3 +1,34 @@
 <% provide(:title, 'Sign up') %>
-<h1>Kudoers#new</h1>
-<p>Find me in app/views/kudoers/new.html.erb</p>
+<h1>Sign up</h1>
+
+<%= form_for(@kudoer) do |f| %>
+    <div class="row">
+      <div class="span6 offset3">
+
+        <%= render 'shared/error_messages' %>
+
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation %>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span6 offset3">
+        <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+
+      </div>
+    </div>
+<% end %>

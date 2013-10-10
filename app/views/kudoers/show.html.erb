@@ -1,3 +1,13 @@
 <% provide(:title, @kudoer.first_name + ' ' + @kudoer.last_name) %>
 
-<%= @kudoer.email %>, <%= @kudoer.first_name %>, <%= @kudoer.last_name %>
+<div class="row">
+  <aside class="span6">
+    <section>
+      <h1>
+        <%= gravatar_for @kudoer %>
+        <%= @kudoer.email %>, <%= @kudoer.first_name %>, <%= @kudoer.last_name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
