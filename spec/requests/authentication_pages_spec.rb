@@ -34,7 +34,7 @@ describe "Authentication" do
         click_button "Sign in"
       end
 
-      it { should have_title(kudoer.first_name + ' ' + kudoer.last_name) }
+      it { should have_title('Welcome ' + kudoer.full_name) }
       it { should have_link('Profile',     href: kudoer_path(kudoer)) }
       it { should have_link('Sign out',    href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }

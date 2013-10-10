@@ -1,4 +1,4 @@
-<% provide(:title, 'Welcome!') %>
+<% provide(:title, signed_in? ? 'Welcome ' + current_kudoer.full_name + '!' : 'Welcome!' ) %>
 
 <div class="center hero-unit">
   <h1>Well Done Kudos</h1>

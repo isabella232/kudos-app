@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     kudoer = Kudoer.find_by(email: params[:session][:email].downcase)
     if kudoer && kudoer.authenticate(params[:session][:password])
       sign_in kudoer
-      redirect_to kudoer
+      redirect_to root_path
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'
@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    sign_out
+    redirect_to root_path
   end
 
 end
