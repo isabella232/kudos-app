@@ -12,6 +12,10 @@ class Kudoer < ActiveRecord::Base
   has_secure_password
   validates :password, length: {minimum: 8}
 
+  def full_name
+    first_name + ' ' + last_name
+  end
+
   def Kudoer.new_remember_token
     SecureRandom.urlsafe_base64
   end

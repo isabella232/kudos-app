@@ -17,7 +17,7 @@ describe "Kudoer pages" do
 
     it { should have_content(kudoer.first_name) }
     it { should have_content(kudoer.last_name) }
-    it { should have_title(kudoer.first_name + ' ' + kudoer.last_name) }
+    it { should have_title(kudoer.full_name) }
   end
 
   describe "signup" do
@@ -44,6 +44,16 @@ describe "Kudoer pages" do
       it "should create a kudoer" do
         expect { click_button submit }.to change(Kudoer, :count).by(1)
       end
+
+      describe "after saving the kudoer" do
+        before { click_button submit }
+        let(:kudoer) { Kudoer.find_by(email: 'user@example.com') }
+
+        it { should have_link('Sign out') }
+        it { should have_content("Welcome to the Kudos!") }
+        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+      end
+
     end
   end
 

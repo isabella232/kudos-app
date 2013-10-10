@@ -1,11 +1,11 @@
-<% provide(:title, @kudoer.first_name + ' ' + @kudoer.last_name) %>
+<% provide(:title, @kudoer.full_name) %>
 
 <div class="row">
   <aside class="span6">
     <section>
       <h1>
         <%= gravatar_for @kudoer %>
-        <%= @kudoer.email %>, <%= @kudoer.first_name %>, <%= @kudoer.last_name %>
+        <%= @kudoer.full_name %> ( <%= @kudoer.email %> )
       </h1>
     </section>
   </aside>

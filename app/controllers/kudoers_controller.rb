@@ -11,8 +11,9 @@ class KudoersController < ApplicationController
   def create
     @kudoer = Kudoer.new(kudoer_params)    # Not the final implementation!
     if @kudoer.save
+      sign_in @kudoer
       flash[:success] = "Welcome to the Kudos!"
-      redirect_to @kudoer
+      redirect_to root_path
     else
       render 'new'
     end
