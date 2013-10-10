@@ -1,6 +1,11 @@
 Kudos::Application.routes.draw do
 
+  resources :kudoers
+
   root "main#index"
+  get "kudoers/new"
+
+  match '/signup',  to: 'kudoers#new',            via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
