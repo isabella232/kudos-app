@@ -19,6 +19,8 @@ describe Kudoer do
 
   it { should respond_to(:authenticate) }
 
+  it { should respond_to(:remember_token) }
+
   it { should be_valid }
 
   describe "when email is not present" do
@@ -34,6 +36,11 @@ describe Kudoer do
   describe "when last_name is not present" do
     before { @kudoer.last_name = " " }
     it { should_not be_valid }
+  end
+
+  describe "remember token" do
+    before { @kudoer.save }
+    its(:remember_token) { should_not be_blank }
   end
 
   describe "when password is not present" do
