@@ -37,8 +37,8 @@ describe "Kudoer pages" do
         fill_in "First name",   with: "Example"
         fill_in "Last name",    with: "User"
         fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
+        fill_in "Password",     with: "testtest"
+        fill_in "Confirmation", with: "testtest"
       end
 
       it "should create a kudoer" do
